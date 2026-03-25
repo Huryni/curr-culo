@@ -392,201 +392,85 @@ a:hover {
 }
 
 /* Modern Creative Print Styles */
+/* Specific styles for PDF generation and Print */
+/* Professional Print & PDF Generation Styles */
 @media print {
-  @page {
-    margin: 1cm;
-    size: A4 portrait;
+  @page { margin: 15mm; size: A4 portrait; }
+  * { 
+    background: transparent !important; 
+    color: black !important; 
+    box-shadow: none !important; 
+    text-shadow: none !important; 
+    -webkit-print-color-adjust: economy !important; 
+    print-color-adjust: economy !important; 
+    border-color: #000 !important; 
   }
-
-  /* Reset */
-  :root {
-    --bg-deep: #fff;
-    --text-main: #1f2937;
-    --text-muted: #4b5563;
-    --brand-print: #6246ea;
-    /* Brand Purple */
-    --accent-print: #00d2ff;
+  body { 
+    background: white !important; 
+    color: #000 !important; 
+    font-family: Arial, Helvetica, sans-serif !important; 
+    font-size: 11pt !important; 
+    line-height: 1.4 !important; 
+    margin: 0 !important; 
+    padding: 0 !important; 
   }
+  .topbar, .nav, .btn, .pill, #themeToggle, #copyBtn, .action-link, footer, .hero-right .quick, #downloadPdf, .badge::after { display: none !important; }
+  .container { width: 100% !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
+  .section { padding: 0 !important; margin-bottom: 20pt !important; page-break-inside: auto !important; }
+  .hero { display: block !important; text-align: center !important; border-bottom: 1.5pt solid #000 !important; padding-bottom: 15pt !important; margin-bottom: 20pt !important; background: none !important; }
+  .hero-left { display: block !important; width: 100% !important; }
+  .hero h1 { font-size: 24pt !important; margin: 0 0 5pt 0 !important; font-weight: bold !important; text-transform: uppercase !important; color: #000 !important; -webkit-text-fill-color: #000 !important; background: none !important; }
+  .subtitle { font-size: 12pt !important; color: #000 !important; margin: 0 0 10pt 0 !important; font-weight: bold !important; font-style: italic !important; }
+  .contact { display: block !important; font-size: 10pt !important; color: #000 !important; margin: 10pt 0 0 0 !important; }
+  .contact a { color: #000 !important; text-decoration: none !important; margin: 0 10pt !important; display: inline-block !important; }
+  .hero-right { display: block !important; width: 100% !important; margin-top: 20pt !important; text-align: left !important; }
+  .hero-right .card { display: block !important; border: none !important; padding: 0 !important; background: transparent !important; margin: 0 0 20pt 0 !important; }
+  .hero-right .card h2 { font-size: 13pt !important; border-bottom: 1pt solid #000 !important; padding-bottom: 2pt !important; margin-bottom: 8pt !important; text-transform: uppercase !important; color: #000 !important; font-weight: bold !important; }
+  .hero-right .card p { font-size: 11pt !important; line-height: 1.5 !important; }
+  .section-head { margin-top: 15pt !important; margin-bottom: 10pt !important; border-bottom: 1pt solid #000 !important; padding-bottom: 2pt !important; }
+  .section-head h2 { font-size: 13pt !important; text-transform: uppercase !important; color: #000 !important; margin: 0 !important; font-weight: bold !important; }
+  .section-head p, .section-head h2::after { display: none !important; }
+  .grid { display: block !important; width: 100% !important; }
+  .card { page-break-inside: avoid !important; margin-bottom: 15pt !important; border: none !important; padding: 0 !important; background: transparent !important; display: block !important; width: 100% !important; }
+  .card-head { display: flex !important; justify-content: space-between !important; align-items: baseline !important; margin-bottom: 2pt !important; }
+  .card h3 { font-size: 11.5pt !important; color: #000 !important; font-weight: bold !important; margin: 0 !important; }
+  .badge { font-size: 10.5pt !important; font-weight: normal !important; color: #000 !important; background: transparent !important; border: none !important; padding: 0 !important; font-style: italic !important; }
+  .role { font-weight: bold !important; margin: 1pt 0 !important; font-size: 11pt !important; }
+  .bullets { margin: 5pt 0 10pt 15pt !important; padding: 0 !important; list-style-type: disc !important; }
+  .bullets li { margin-bottom: 3pt !important; }
+  .muted { font-size: 10pt !important; color: #000 !important; font-style: italic !important; }
+}
 
-  body {
-    background: white;
-    color: var(--text-main);
-    font-size: 10pt;
-    line-height: 1.5;
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+/* Forced PDF styles via class */
+body.is-printing {
+  background: white !important;
+  color: #000 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11pt !important;
+}
 
-  /* Hide Web Elements */
-  .topbar,
-  .nav,
-  .btn,
-  .theme-toggle,
-  .pill,
-  #themeToggle,
-  #copyBtn,
-  .action-link,
-  footer,
-  .hero-right .quick {
-    display: none !important;
-  }
+.is-printing * {
+  background: transparent !important;
+  color: black !important;
+  box-shadow: none !important;
+  transition: none !important;
+  animation: none !important;
+}
 
-  /* Container */
-  .container {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-  }
+.is-printing .hero { display: block !important; text-align: center !important; border-bottom: 1.5pt solid #000 !important; padding-bottom: 15pt !important; margin-bottom: 20pt !important; background: none !important; }
+.is-printing .hero h1 { font-size: 24pt !important; font-weight: bold !important; text-transform: uppercase !important; color: #000 !important; -webkit-text-fill-color: #000 !important; background: none !important; }
+.is-printing .subtitle { font-size: 12pt !important; font-weight: bold !important; font-style: italic !important; }
+.is-printing .contact { display: block !important; }
+.is-printing .contact a { color: #000 !important; text-decoration: none !important; margin: 0 10pt !important; display: inline-block !important; }
+.is-printing .hero-right .card h2, .is-printing .section-head { border-bottom: 1pt solid #000 !important; }
+.is-printing .section-head h2 { font-size: 13pt !important; text-transform: uppercase !important; font-weight: bold !important; }
+.is-printing .role { font-weight: bold !important; }
+.is-printing .bullets { list-style-type: disc !important; margin-left: 15pt !important; }
+.is-printing .topbar, .is-printing .nav, .is-printing .btn, .is-printing .pill, .is-printing footer { display: none !important; }
+.is-printing .card { border: none !important; background: transparent !important; margin-bottom: 15pt !important; }
 
-  .section {
-    padding: 15px 0;
-    margin: 0;
-    page-break-inside: avoid;
-  }
 
-  /* Header / Hero - Modern & Centered */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--brand-print);
-    margin-bottom: 20px;
-    background: linear-gradient(to right, rgba(98, 70, 234, 0.05), rgba(0, 210, 255, 0.05));
-    border-radius: 12px;
-    padding: 20px;
-  }
 
-  .hero h1 {
-    font-size: 26pt;
-    color: var(--brand-print);
-    margin: 0;
-    font-weight: 800;
-    background: none;
-    -webkit-text-fill-color: initial;
-  }
 
-  .subtitle {
-    font-size: 12pt;
-    color: var(--text-muted);
-    margin: 8px 0;
-    font-weight: 500;
-  }
 
-  .contact {
-    justify-content: center;
-    gap: 15px;
-    font-size: 10pt;
-    color: var(--text-main);
-    font-weight: 500;
-  }
-
-  .contact a {
-    text-decoration: none;
-    color: var(--text-main);
-  }
-
-  .dot {
-    color: var(--accent-print);
-    font-weight: bold;
-  }
-
-  .hero-right,
-  .hero-left {
-    display: contents;
-  }
-
-  .hero-right .card {
-    display: none;
-  }
-
-  /* Hide the summary card box */
-
-  /* Section Headers */
-  .section-head {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .section-head h2 {
-    font-size: 16pt;
-    color: var(--brand-print);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-left: 15px;
-    border-left: 4px solid var(--accent-print);
-  }
-
-  .section-head h2::after {
-    display: none;
-  }
-
-  .section-head p {
-    display: none;
-  }
-
-  /* Grid System for Print */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    page-break-inside: avoid;
-  }
-
-  /* Cards */
-  .card {
-    background: #fdfdfd;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 12px 15px;
-    box-shadow: none;
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-
-  .card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #f3f4f6;
-    padding-bottom: 5px;
-  }
-
-  .card h3 {
-    font-size: 12pt;
-    font-weight: 700;
-    color: #111;
-    margin: 0;
-  }
-
-  .badge {
-    .badge::after {
-      content: ")";
-    }
-
-    .role {
-      color: #333;
-      margin: 2px 0;
-      font-size: 10pt;
-    }
-
-    .bullets {
-      padding-left: 15px;
-      margin-top: 5px;
-      color: #000;
-    }
-
-    /* Ensure links are printed nicely if needed, or hidden */
-    a {
-      text-decoration: none;
-      color: black;
-    }
-  }
+

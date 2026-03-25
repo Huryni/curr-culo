@@ -45,10 +45,42 @@ LinkedIn: https://www.linkedin.com/in/carlos-ferreira-027a15180/`;
     }
   });
 
-  // Download JSON (mini API do seu CV)
-  // Placeholder for PDF download analytics or future logic
+  // Download PDF (Profissional)
   const download = document.getElementById("downloadPdf");
-  if (download) {
-     // Optional: Add analytics or tracking here if needed
-  }
+  download?.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const element = document.body; // Captura o body inteiro para manter o estilo
+    
+    // Configurações para um PDF impecável
+    const opt = {
+      margin: [10, 10, 10, 10],
+      filename: 'Carlos_Daniel_Curriculo.pdf',
+      image: { type: 'jpeg', quality: 1 },
+      html2canvas: { 
+        scale: 2, 
+        useCORS: true, 
+        letterRendering: true,
+        scrollX: 0,
+        scrollY: 0
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    };
+
+    // Estilização temporária e feedback visual
+    const originalText = download.textContent;
+    download.textContent = "Gerando...";
+    document.body.classList.add("is-printing");
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      document.body.classList.remove("is-printing");
+      download.textContent = originalText;
+    }).catch(err => {
+      document.body.classList.remove("is-printing");
+      console.error("Erro ao gerar PDF:", err);
+      download.textContent = "Erro ao baixar";
+      setTimeout(() => download.textContent = originalText, 2000);
+    });
+  });
 })();
