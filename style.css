@@ -4,10 +4,10 @@
   --bg-mid: #302b63;
   --bg-lite: #24243e;
 
-  --primary: #7928ca;
-  /* Deep Purple */
-  --secondary: #00d2ff;
-  /* Cyan Blue */
+  --primary: #32137e;
+  /* Deep Purple-Blue */
+  --secondary: #4423ac;
+  /* Royal Purple */
   --accent: #ff0080;
   /* Pink/Magenta Accent */
 
@@ -26,7 +26,7 @@
 
   /* Gradients */
   --gradient-main: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --gradient-bg: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  --gradient-bg: linear-gradient(to right, #0a061a, #1e114d, #140d2e);
 }
 
 :root[data-theme="light"] {
